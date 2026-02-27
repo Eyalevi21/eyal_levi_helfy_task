@@ -1,0 +1,3 @@
+/* Global styles entry point – imports all CSS files by concern */
+@import './styles/layout.css';
+@import './styles/carousel.css';

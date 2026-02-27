@@ -1,0 +1,169 @@
+/* ── App layout ──────────────────────────────────────────────── */
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #f4f6f8;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.btn-open-form {
+    padding: 10px 20px;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-open-form:hover {
+    background: #2980b9;
+}
+
+.error-banner {
+    background: #fde8e8;
+    color: #c0392b;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.loading-msg,
+.empty-msg {
+    text-align: center;
+    color: #888;
+    margin: 40px 0;
+}
+
+/* ── Modal overlay ───────────────────────────────────────────── */
+
+/* Dark semi-transparent backdrop that covers the whole screen */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    /* top/right/bottom/left: 0 */
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* White box that contains the form */
+.modal-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Task form (lives inside .modal-box) ─────────────────────── */
+
+.task-form h2 {
+    margin: 0 0 20px;
+}
+
+.task-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.task-form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.btn-submit {
+    flex: 1;
+    padding: 10px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-submit:hover {
+    background: #229954;
+}
+
+.btn-cancel {
+    flex: 1;
+    padding: 10px;
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-cancel:hover {
+    background: #ccc;
+}
+
+/* ── Filter buttons ──────────────────────────────────────────── */
+
+.task-filter-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid #3498db;
+    border-radius: 20px;
+    background: transparent;
+    color: #3498db;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background: #ebf5fb;
+}
+
+.filter-btn.active {
+    background: #3498db;
+    color: #fff;
+}

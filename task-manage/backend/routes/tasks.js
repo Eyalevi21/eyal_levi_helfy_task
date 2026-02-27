@@ -2,10 +2,25 @@ const express = require('express');
 const router = express.Router();
 const { tasks, generateId } = require('../models/task');
 const validateTask = require('../middleware/validateTask');
-// @route   GET /api/tasks
+
 router.get('/', (req, res) => {
     try {
-        res.status(200).json(tasks);
+        const status = req.query.status || 'all';
+        const page = Math.max(1, parseInt(req.query.page) || 1);
+        const limit = Math.max(1, parseInt(req.query.limit) || 20);
+
+        // 1. Filter by status
+        let filtered = tasks;
+        if (status === 'completed') filtered = tasks.filter(t => t.completed);
+        if (status === 'pending') filtered = tasks.filter(t => !t.completed);
+
+        // 2. Paginate
+        const total = filtered.length;
+        const startIdx = (page - 1) * limit;
+        const page_tasks = filtered.slice(startIdx, startIdx + limit);
+        const hasMore = startIdx + limit < total;
+
+        res.status(200).json({ tasks: page_tasks, page, limit, total, hasMore });
     } catch (error) {
         console.error("Error fetching tasks:", error);
         res.status(500).json({ error: "Internal server error" });

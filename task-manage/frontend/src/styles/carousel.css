@@ -1,0 +1,147 @@
+/* ── Carousel ────────────────────────────────────────────────── */
+
+/* The visible window – hides everything scrolled outside it */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 16px 0;
+}
+
+/* The long row of cards – JS moves this left/right with translateX */
+.carousel-track {
+    display: flex;
+    will-change: transform;
+}
+
+/* Centered layout used when all tasks fit on screen without scrolling */
+.carousel-static {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Each card slot – fixed width so every card is the same size */
+.carousel-card {
+    flex-shrink: 0;
+    width: 300px;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+
+/* ── Task item card ──────────────────────────────────────────── */
+
+.task-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    /* Fixed height makes all cards the same size regardless of content */
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-title {
+    margin: 0 0 6px;
+    font-size: 1rem;
+}
+
+.task-description {
+    margin: 0 0 10px;
+    font-size: 0.875rem;
+    color: #555;
+    /* Cap long text at 3 lines, show '...' for the rest */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
+    flex: 1;
+}
+
+.task-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.priority-badge {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: capitalize;
+}
+
+.priority-badge.high {
+    background: #fde8e8;
+    color: #c0392b;
+}
+
+.priority-badge.medium {
+    background: #fef3e2;
+    color: #e67e22;
+}
+
+.priority-badge.low {
+    background: #e8f8e8;
+    color: #27ae60;
+}
+
+.task-date {
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.task-id {
+    font-size: 0.7rem;
+    color: #bbb;
+    font-style: italic;
+    margin-top: auto;
+    /* push to the bottom of the fixed-height card */
+    display: block;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.task-actions button {
+    flex: 1;
+    padding: 6px 4px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.task-actions button:hover {
+    opacity: 0.8;
+}
+
+.btn-toggle {
+    background: #3498db;
+    color: #fff;
+}
+
+.btn-edit {
+    background: #f39c12;
+    color: #fff;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: #fff;
+}
