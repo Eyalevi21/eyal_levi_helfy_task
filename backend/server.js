@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const tasksRouter = require('./routes/tasks');
 
 const app = express();
 const PORT = 4000;
@@ -7,10 +8,10 @@ const PORT = 4000;
 
 app.use(cors());
 app.use(express.json());
-
+app.use('/api/tasks', tasksRouter);
 
 app.get('/api/health', (req, res) => {
-    res.status(200).json({ message: 'Server is running!' });
+    res.status(200).json({ message: 'Server is running' });
 });
 
 
